@@ -267,3 +267,11 @@ end
 
 ## so that Dicts will work
 Base.hash(ex::Basic) = ccall((:basic_hash, libsymengine), UInt, (Ptr{Basic}, ), &ex)
+
+function coeff(b::Basic, x::Basic, n::Basic)
+    c = Basic()
+    ccall((:basic_coeff, libsymengine), Void, (Ptr{Basic}, Ptr{Basic}, Ptr{Basic}, Ptr{Basic}), &c, &b, &x, &n)
+    return c
+end
+
+coeff(b::Basic, x::Basic) = coeff(b, x, Basic(1))
