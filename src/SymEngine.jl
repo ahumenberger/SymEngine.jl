@@ -10,6 +10,7 @@ export free_symbols, get_args
 export ascii_art
 export subs, lambdify, N
 export series
+export linsolve, solve_poly
 
 const deps_file = joinpath(dirname(@__FILE__), "..", "deps", "deps.jl")
 const deps_in_file = joinpath(dirname(@__FILE__), "..", "deps", "deps.jl.in")
@@ -37,6 +38,7 @@ include("simplify.jl")
 include("calculus.jl")
 include("recipes.jl")
 include("dense-matrix.jl")
+include("solve.jl")
 
 if !noinit
     __init__() = init_constants()
